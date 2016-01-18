@@ -39,21 +39,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.richfaces</groupId>
-            <artifactId>richfaces</artifactId>
-            <version>4.5.11.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.richfaces</groupId>
-            <artifactId>richfaces-core</artifactId>
-            <version>4.5.11.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>5.5.8</version>
-        </dependency>
 
     </dependencies>
 
