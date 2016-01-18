@@ -1,0 +1,35 @@
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <flow-definition id="order">
+        
+        <view id="new-client">
+            <vdl-document>/order/new-client.xhtml</vdl-document>
+        </view>
+        
+        <view id="confirm-client">
+            <vdl-document>/order/confirm-client.xhtml</vdl-document>
+        </view>
+
+        <view id="order-details">
+            <vdl-document>/order/order-details.xhtml</vdl-document>
+        </view>
+
+        <view id="order-confirm">
+            <vdl-document>/order/confirm-order.xhtml</vdl-document>
+        </view>
+
+        <view id="order-conclusion">
+            <vdl-document>/order/order-conclusion.xhtml</vdl-document>
+        </view>
+
+        <flow-return id="returnPage">
+            <from-outcome>/order-return</from-outcome>
+        </flow-return>
+
+    </flow-definition>
+
+</faces-config>

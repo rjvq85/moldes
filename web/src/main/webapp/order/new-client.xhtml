@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="app.css"/>
+</h:head>
+<h:body>
+    <ui:composition template="../layout/commonLayout.xhtml">
+        <ui:define name="content">
+            <div class="container body-content">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Novo Cliente
+                    </div>
+                    <div class="panel-body text-left">
+                        <h:form id="newClientForm">
+                            <div class="row spacer-sm">
+                                <div class="col-sm-12">
+                                    <p class="lead text-center">
+                                        Nome
+                                    </p>
+                                    <h:inputText styleClass="form-control input-sm" value="#{orderWeb.name}"
+                                                 a:placeholder="Nome"/>
+                                </div>
+                            </div>
+                            <div class="row spacer-sm">
+                                <div class="col-sm-6">
+                                    <p class="lead text-center">
+                                        E-mail
+                                    </p>
+                                    <h:inputText styleClass="form-control input-sm" value="#{orderWeb.email}"
+                                                 a:placeholder="E-mail"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="lead text-center">
+                                        Telefone
+                                    </p>
+                                    <h:inputText styleClass="form-control input-sm" value="#{orderWeb.phone}"
+                                                 a:placeholder="Telefone"/>
+                                </div>
+                            </div>
+                            <div class="row spacer-sm">
+                                <div class="col-sm-6">
+                                    <p class="lead text-center">
+                                        Morada
+                                    </p>
+                                    <h:inputText styleClass="form-control input-sm" value="#{orderWeb.address}"
+                                                 a:placeholder="Morada"/>
+                                </div>
+                                <div class="col-sm-2">
+                                    <p class="lead text-center">
+                                        Código Postal
+                                    </p>
+                                    <h:inputText styleClass="form-control input-sm" id="poBox" value="#{orderWeb.poBox}"
+                                                 a:placeholder="Código Postal">
+                                    </h:inputText>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="lead text-center">
+                                        Cidade
+                                    </p>
+                                    <h:inputText styleClass="form-control input-sm" value="#{orderWeb.city}"
+                                                 a:placeholder="Cidade"/>
+                                </div>
+                            </div>
+                            <div class="row spacer">
+                                <div class="col-sm-12 text-center">
+                                    <h:commandButton action="#{orderWeb.createClient()}"
+                                                     styleClass="btn btn-primary btn-even" value="Confirmar"/>
+                                    <h:commandButton action="order" styleClass="btn btn-default btn-even"
+                                                     value="Voltar"/>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="app.css"/>
+</h:head>
+<h:body>
+    <ui:composition template="../layout/commonLayout.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <div class="container body-content">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Dados da Encomenda</div>
+                        <div class="panel-body">
+                            <div class="row spacer-sm">
+                                <div class="col-sm-6">
+                                    <p class="lead">Vendedora</p>
+                                    <h:inputText styleClass="form-control input-sm" value="#{orderWeb.salesPerson}"
+                                                 a:passthrough="Vendedora"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="lead">Preço</p>
+                                    <h:inputText value="#{orderWeb.price}" a:passthrough="Preço €"/>
+                                </div>
+                            </div>
+                            <div class="row spacer-sm">
+                                <div class="col-sm-12">
+                                    <p class="lead">Descrição</p>
+                                    <h:inputTextarea styleClass="form-control input-sm" value="#{orderWeb.description}"
+                                                     a:passthrough="Descrição (peças, quantidades)" rows="10"/>
+                                </div>
+                            </div>
+                            <div class="row spacer-sm">
+                                <div class="col-sm-6">
+                                    <p class="lead">Data da Encomenda</p>
+                                    <rich:calendar value="#{orderWeb.orderDate}"
+                                                   datePattern="dd-MM-yyyy"
+                                                   converter="#{localDateConverterWeb}"></rich:calendar>
+                                </div>
+                            </div>
+                            <div class="row spacer-sm">
+                                <div class="col-sm-6">
+                                    <p class="lead">Meio de Entrega</p>
+                                    <h:selectOneMenu styleClass="form-control" value="#{orderWeb.deliveryType}">
+                                        <f:selectItem itemLabel="Tipo de Entrega" itemValue=""
+                                                      noSelectionOption="true"/>
+                                        <f:selectItems value="#{orderWeb.deliverytypes}" var="type"
+                                                       itemLabel="#{type.description}" itemValue="#{type}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="lead">Data de Entrega</p>
+                                    <rich:calendar value="#{orderWeb.deliveryDate}"
+                                                   datePattern="dd-MM-yyyy"
+                                                   converter="#{localDateConverterWeb}"></rich:calendar>
+                                </div>
+                            </div>
+                            <div class="row spacer-sm">
+                                <div class="col-sm-6">
+                                    <p class="lead">Meio de Pagamento</p>
+                                    <h:selectOneMenu styleClass="form-control" value="#{orderWeb.paymentType}">
+                                        <f:selectItem itemLabel="Tipo de Pagamento" itemValue=""
+                                                      noSelectionOption="true"/>
+                                        <f:selectItems value="#{orderWeb.paymentTypes}" var="type"
+                                                       itemLabel="#{type.description}" itemValue="#{type}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="lead">Data de Pagamento</div>
+                                    <rich:calendar value="#{orderWeb.paymentDate}"
+                                                   datePattern="dd-MM-yyyy"
+                                                   converter="#{localDateConverterWeb}"></rich:calendar>
+                                </div>
+                            </div>
+                            <div class="row spacer-sm">
+                                <div class="col-sm-6">
+                                    <label class="lead"><h:selectBooleanCheckbox label="Encomenda Paga"
+                                                                                 value="#{orderWeb.paid}"/> Pago</label>
+                                </div>
+                            </div>
+                            <div class="row spacer">
+                                <div class="col-sm-12 text-center">
+                                    <h:commandButton styleClass="btn btn-primary btn-even"
+                                                     action="#{orderWeb.createOrder()}" value="Continuar"/>
+                                    <h:commandButton styleClass="btn btn-default btn-even" action="order"
+                                                     value="Voltar"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

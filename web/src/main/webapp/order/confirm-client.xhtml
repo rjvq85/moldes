@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="app.css"/>
+</h:head>
+<h:body>
+    <ui:composition template="../layout/commonLayout.xhtml">
+        <ui:define name="content">
+            <div class="container body-content">
+                <p class="lead">Dados</p>
+                <div class="row spacer-sm">
+                    <div class="col-sm-6 text-left">
+                        Referência: <strong><h:outputText value="#{orderWeb.client.ref}"/></strong><br/>
+                        Nome: <strong><h:outputText value="#{orderWeb.client.name}"/></strong><br/>
+                        Morada: <strong><h:outputText
+                            value="#{orderWeb.client.address}, #{orderWeb.client.poBox} #{orderWeb.client.city}"/></strong><br/>
+                        E-mail: <strong>#{orderWeb.client.email}</strong><br/>
+                        Telefone: <strong>#{orderWeb.client.phone}</strong>
+                    </div>
+                </div>
+                <div class="row spacer">
+                    <div class="col-sm-12 text-center">
+                        <h:form id="confirmClientForm">
+                            <h:commandButton action="order-details" styleClass="btn btn-primary btn-even" value="Confirmar"/>
+                            <h:commandButton action="order" styleClass="btn btn-default btn-even" value="Voltar"/>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

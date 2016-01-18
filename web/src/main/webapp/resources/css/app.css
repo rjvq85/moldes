@@ -1,0 +1,45 @@
+body {
+    padding-top: 100px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*styles for container - start*/
+.container.app-container{
+    width:100%;
+    max-width:100%;
+}
+.workout-display-div{
+    text-align:center;
+    padding:40px;
+}
+.workout-display-div .img-responsive{
+    margin: 25px auto;
+    width:540px;
+    height:360px;
+    cursor:pointer;
+}
+.workout-display-div .time-progress{
+    margin-top:40px;
+}
+/*styles for container - end*/
+
+label {
+    font-size: 20px;
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+}
+input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:10px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
+}

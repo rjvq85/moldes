@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="app.css"/>
+</h:head>
+<h:body>
+    <ui:composition template="../layout/commonLayout.xhtml">
+        <ui:define name="content">
+            <h:form id="orderForm">
+                <div class="container body-content">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Escolher Cliente</div>
+                        <div class="panel-body text-left">
+                            <div class="row spacer-sm">
+                                <div class="col-sm-6 text-center">
+                                    <p class="lead text-center">Cliente</p>
+                                    <h:selectOneMenu styleClass="form-control" id="client" value="#{orderWeb.client}"
+                                                     converter="#{clientConverter}"
+                                                     var="c">
+                                        <f:selectItem noSelectionOption="true" itemValue=""
+                                                      itemLabel="Escolher cliente:"/>
+                                        <f:selectItems value="#{orderWeb.clients}" var="client"
+                                                       itemLabel="#{client.name} (#{client.ref})"
+                                                       itemValue="#{client}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <label class="lead"><h:selectBooleanCheckbox id="checkbox" onchange="disableMenu();"
+                                                                                 value="#{orderWeb.newClient}">
+                                        <f:ajax/>
+                                    </h:selectBooleanCheckbox> Novo cliente
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row spacer">
+                                <div class="col-sm-12 text-center">
+                                    <h:commandButton action="#{orderWeb.chooseClient}"
+                                                     styleClass="btn btn-primary btn-even"
+                                                     value="Seguinte"/>
+                                    <h:commandButton action="/enter-order.xhtml" value="Cancelar"
+                                                     styleClass="btn btn-default btn-even"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <script>
+                function disableMenu() {
+                    var checkbox = document.getElementById("orderForm:checkbox");
+                    var client = document.getElementById("orderForm:client")
+                    if (checkbox.checked) {
+                        client.disabled = true;
+                    } else {
+                        client.disabled = false;
+                    }
+                }
+            </script>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

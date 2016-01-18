@@ -1,0 +1,17 @@
+/*Spacer for rows*/
+
+.row.spacer {
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.row.spacer-sm {
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+}
+
+/*Same width buttons*/
+
+.btn-even {
+    width: 10%;
+}
