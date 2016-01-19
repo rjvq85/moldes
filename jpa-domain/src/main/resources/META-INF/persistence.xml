@@ -5,7 +5,8 @@
 	<persistence-unit name="PostgreSQLDS" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
-		<class>pt.jaybee.moldes.domain.persistence.UserPersistenceImpl</class>
+		<class>pt.jaybee.moldes.domain.entities.UserEntity</class>
+		<class>pt.jaybee.moldes.domain.entities.MoldEntity</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="true" />
