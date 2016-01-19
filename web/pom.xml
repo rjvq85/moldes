@@ -39,7 +39,12 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>net.bootsfaces</groupId>
+            <artifactId>bootsfaces</artifactId>
+            <version>0.8.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

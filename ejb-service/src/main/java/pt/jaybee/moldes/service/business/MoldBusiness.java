@@ -5,6 +5,7 @@ import pt.jaybee.moldes.service.facades.mold.MoldPersistence;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.util.List;
 
 @Stateless
 public class MoldBusiness {
@@ -14,5 +15,9 @@ public class MoldBusiness {
 
     public void newLoadedMold(Mold m) {
         persistence.create(m);
+    }
+
+    public List<Mold> getAll() {
+        return persistence.retrieveAll();
     }
 }

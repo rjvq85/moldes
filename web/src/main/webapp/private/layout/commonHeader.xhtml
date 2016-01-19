@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+</h:head>
+<h:body>
+    <script>
+        var selector = '.nav li';
+
+        $(selector).on('click', function () {
+            $(selector).removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
+    <ui:composition>
+        <h:form id="navForm" prependId="false">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><h:commandLink action="/private/new.xhtml?faces-redirect=true" value="Novo Molde">
+                                <f:ajax render=":content"/>
+                            </h:commandLink></li>
+                            <li>
+                                <h:commandLink action="/private/list.xhtml?faces-redirect=true" value="Lista de Moldes">
+                                    <f:ajax render=":content"/>
+                                </h:commandLink>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </h:form>
+    </ui:composition>
+</h:body>
+</html>
