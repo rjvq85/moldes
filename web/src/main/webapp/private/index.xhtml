@@ -8,6 +8,10 @@
 <h:head>
 </h:head>
 <h:body>
-    <h1>Welcome #{usernameLogin} !</h1>
+    <ui:composition template="/private/layout/commonLayout.xhtml">
+        <ui:define name="content">
+            <h1>Bem-vinda, #{usernameLogin} !</h1>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

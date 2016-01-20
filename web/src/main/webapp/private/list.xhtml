@@ -10,7 +10,10 @@
     <title>Title</title>
     <h:outputScript library="js" name="jquery.js"/>
     <h:outputScript library="js" name="bootstrap.js"/>
+    <h:outputScript library="js" name="jquery.dataTables.js"/>
+    <h:outputScript library="js" name="dataTables.bootstrap.js"/>
     <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="dataTables.bootstrap.css"/>
 </h:head>
 <h:body>
     <ui:composition template="/private/layout/commonLayout.xhtml">
@@ -43,9 +46,7 @@
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:commandLink action="#{listMolds.orderList}">
-                                            Pertence a:
-                                        </h:commandLink>
+                                        Pertence a:
                                     </f:facet>
                                     #{m.person.description}
                                 </h:column>
@@ -54,15 +55,6 @@
                     </div>
                 </div>
             </div>
-            <script>
-                $(document).ready(function () {
-                    $('#moldtable').paging({
-                        limit: 10,
-                        rowDisplayStyle: 'block',
-                        activePage: 0
-                    });
-                });
-            </script>
         </ui:define>
     </ui:composition>
 </h:body>
