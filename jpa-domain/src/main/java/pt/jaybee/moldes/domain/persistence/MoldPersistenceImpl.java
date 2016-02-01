@@ -32,6 +32,10 @@ public class MoldPersistenceImpl implements MoldPersistence {
 
     @Override
     public Mold update(Mold mold) {
+        if (mold instanceof EntityAware<?>) {
+            MoldEntity entity = getEntity(mold);
+            return new MoldProxy(em.merge(entity));
+        }
         return null;
     }
 
@@ -42,7 +46,7 @@ public class MoldPersistenceImpl implements MoldPersistence {
 
     @Override
     public List<Mold> retrieveAll() {
-        TypedQuery<MoldEntity> query = em.createNamedQuery("Mold.getAll",MoldEntity.class);
+        TypedQuery<MoldEntity> query = em.createNamedQuery("Mold.getAll", MoldEntity.class);
         return query.getResultList().stream().map(e -> new MoldProxy(e)).collect(Collectors.toList());
     }
 

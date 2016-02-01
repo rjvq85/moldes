@@ -19,11 +19,11 @@
     <ui:composition template="/private/layout/commonLayout.xhtml">
         <ui:define name="content">
 
-            <div class="container">
+            <div id="list-container" class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h:form prependId="false">
-                            <b:dataTable id="moldtable" styleClass="table table-condensed table-hover"
+                        <h:form id="listForm" prependId="false">
+                            <b:dataTable id="moldtable" styleClass="table table-condensed table-hover text-center"
                                          value="#{listMolds.allMolds}"
                                          var="m">
                                 <h:column>
@@ -32,17 +32,42 @@
                                     </f:facet>
                                     #{m.reference}
                                 </h:column>
-                                <h:column>
+                                <h:column id="silverColumn">
                                     <f:facet name="header">
                                         Quantidade (Prata)
                                     </f:facet>
-                                    #{m.silverQt}
+
+                                    <span id="silverField">#{m.silverQt}</span>
+                                    <h:commandLink action="#{changeMold.add(m,0)}"
+                                                   style="position:relative;right:-2.5em;"
+                                                   styleClass="btn btn-info btn-xs">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                        <f:ajax render="listForm"/>
+                                    </h:commandLink>
+                                    <h:commandLink action="#{changeMold.remove(m,0)}"
+                                                   style="position:relative;right:-5em;"
+                                                   styleClass="btn btn-danger btn-xs">
+                                        <f:ajax render="listForm"/>
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </h:commandLink>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         Quantidade (Ouro)
                                     </f:facet>
                                     #{m.goldQt}
+                                    <h:commandLink action="#{changeMold.add(m,1)}"
+                                                   style="position:relative;right:-2.5em;"
+                                                   styleClass="btn btn-info btn-xs">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                        <f:ajax render="listForm :moldtable"/>
+                                    </h:commandLink>
+                                    <h:commandLink action="#{changeMold.remove(m,1)}"
+                                                   style="position:relative;right:-5em;"
+                                                   styleClass="btn btn-danger btn-xs">
+                                        <f:ajax render="listForm :moldtable"/>
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </h:commandLink>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">

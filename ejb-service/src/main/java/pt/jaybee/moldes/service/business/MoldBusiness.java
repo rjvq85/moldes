@@ -20,4 +20,24 @@ public class MoldBusiness {
     public List<Mold> getAll() {
         return persistence.retrieveAll();
     }
+
+    public Mold addQuantity(Mold m, Integer type) {
+        if (type == 0) {
+            m.setSilverQt(m.getSilverQt() + 1);
+        } else {
+            m.setGoldQt(m.getGoldQt() + 1);
+        }
+        m = persistence.update(m);
+        return m;
+    }
+
+    public Mold removeQuantity(Mold m, Integer type) {
+        if (type == 0) {
+            if (m.getSilverQt() > 0) m.setSilverQt(m.getSilverQt() - 1);
+        } else {
+            if (m.getGoldQt() > 0) m.setGoldQt(m.getGoldQt() - 1);
+        }
+        m = persistence.update(m);
+        return m;
+    }
 }
